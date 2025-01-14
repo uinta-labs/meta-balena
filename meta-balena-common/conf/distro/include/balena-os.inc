@@ -3,9 +3,9 @@ require conf/distro/poky.conf
 include conf/distro/include/balena-os-yocto-version.inc
 include conf/distro/include/balena-os-rust-version.inc
 
-DISTRO = "balena-os"
-DISTRO_NAME = "balenaOS"
-DISTRO_VERSION = "6.3.1"
+DISTRO = "uinta-os"
+DISTRO_NAME = "uintaOS"
+DISTRO_VERSION = "0.0.0"
 HOSTOS_VERSION = "${DISTRO_VERSION}"
 python () {
     ''' Set HOSTOS_VERSION from board VERSION if available '''
@@ -45,7 +45,7 @@ def set_default_kernel_cmdline(d):
                 return
     return cmdline
 
-MAINTAINER = "Balena <hello@balena.io>"
+MAINTAINER = "Uinta <hi@uinta.dev>"
 
 # Strip down unneeded features
 POKY_DEFAULT_DISTRO_FEATURES:remove = "ptest"
@@ -106,7 +106,7 @@ python () {
 
 # Partition fingerprints files
 BALENA_FINGERPRINT_EXT ?= "fingerprint"
-BALENA_FINGERPRINT_FILENAME ?= "balenaos"
+BALENA_FINGERPRINT_FILENAME ?= "uintaos"
 
 # Hostname is generated at runtime based on config.json
 hostname:pn-base-files = ""
@@ -138,7 +138,7 @@ SIGN_EFI_PK_KEY_ID ?= "balenaos-pk"
 SIGN_EFI_KEK_KEY_ID ?= "balenaos-kek"
 
 # Default cloud API environment
-BALENA_API_ENV ?= "balena-cloud.com"
+BALENA_API_ENV ?= "upd80.com"
 
 # Default storage of configuration units
 BALENA_CONF_UNIT_STORE ?= "/var/volatile"
