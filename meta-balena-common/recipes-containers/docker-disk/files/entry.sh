@@ -55,18 +55,18 @@ for image_name in ${HOSTEXT_IMAGES}; do
 	fi
 done
 
-# Pull in the supervisor image as a separate app until it converges in the hostOS
-if [ -n "${SUPERVISOR_FLEET}" ] && [ -n "${SUPERVISOR_VERSION}" ]; then
-	_supervisor_image=$(balena_api_fetch_image_from_app "${SUPERVISOR_FLEET}" "${SUPERVISOR_VERSION#v}" "${BALENA_API_ENV}" "${BALENA_API_TOKEN}")
-	echo "Pulling ${SUPERVISOR_FLEET}:${SUPERVISOR_VERSION}"
-	if docker pull "${_supervisor_image}"; then
-		docker tag "${_supervisor_image}" "${_supervisor_image%@*}"
-		docker tag "${_supervisor_image}" "balena_supervisor":"${SUPERVISOR_VERSION}"
-	else
-		echo "Not able to pull ${_supervisor_image}"
-		exit 1
-	fi
-fi
+# # Pull in the supervisor image as a separate app until it converges in the hostOS
+# if [ -n "${SUPERVISOR_FLEET}" ] && [ -n "${SUPERVISOR_VERSION}" ]; then
+# 	_supervisor_image=$(balena_api_fetch_image_from_app "${SUPERVISOR_FLEET}" "${SUPERVISOR_VERSION#v}" "${BALENA_API_ENV}" "${BALENA_API_TOKEN}")
+# 	echo "Pulling ${SUPERVISOR_FLEET}:${SUPERVISOR_VERSION}"
+# 	if docker pull "${_supervisor_image}"; then
+# 		docker tag "${_supervisor_image}" "${_supervisor_image%@*}"
+# 		docker tag "${_supervisor_image}" "balena_supervisor":"${SUPERVISOR_VERSION}"
+# 	else
+# 		echo "Not able to pull ${_supervisor_image}"
+# 		exit 1
+# 	fi
+# fi
 
 echo "Stopping docker..."
 kill -TERM "$(cat /var/run/docker.pid)"

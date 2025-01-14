@@ -39,7 +39,7 @@ RDEPENDS:${PN}:append = "${@bb.utils.contains('MACHINE_FEATURES', 'tpm', ' os-he
 RDEPENDS:${PN}:append = "${@oe.utils.conditional('SIGN_API','','',' cryptsetup dosfstools e2fsprogs-mke2fs lvm2-udevrules os-helpers-fs util-linux-mount util-linux-losetup',d)}"
 
 # This should be just fine
-BALENA_IMAGE ?= "balena-image-${MACHINE}.balenaos-img"
+BALENA_IMAGE ?= "uinta-image-${MACHINE}.balenaos-img"
 
 do_install[depends] += "jq-native:do_populate_sysroot"
 do_install() {

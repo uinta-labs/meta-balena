@@ -1,7 +1,7 @@
 [Unit]
 Description=Resin init flasher service
 Requires=mnt-boot.mount
-Wants=resin-device-register.service openvpn.service
+Wants=resin-device-register.service
 After=mnt-boot.mount
 
 [Service]

@@ -17,7 +17,7 @@
 #                                               INTERNAL_DEVICE_BOOTLOADER_CONFIG will be copied to
 #  BALENA_IMAGE                            - image to be flashed on internal device
 #                                             * this is defaulted to
-#                                               balena-image-${MACHINE}.balenaos-img and should be
+#                                               balena-image-${MACHINE}.uintaos-img and should be
 #                                               just fine
 #  BOOTLOADER_FLASH_DEVICE                - device where bootloader binary will be flashed
 #                                             * this variable should be set together with
@@ -248,22 +248,6 @@ fi
 # CONFIG_PATH should exist
 if [ ! -f "$CONFIG_PATH" ]; then
     fail "$CONFIG_PATH : No such file."
-fi
-
-# Give a chance to openvpn to come alive
-STARTTIME=$(date +%s)
-ENDTIME="$STARTTIME"
-TIMEOUT=15
-if command -v "systemctl"; then
-    while [ "$(systemctl is-active openvpn)" != "active" ] && [ "$(systemctl is-active resin-device-register)" != "active" ]
-    do
-        if [ $((ENDTIME - STARTTIME)) -le $TIMEOUT ]; then
-            sleep 1 && ENDTIME=$((ENDTIME + 1))
-        else
-            info "Timeout while waiting for openvpn to come alive and the device to register. No network?"
-            break
-        fi
-    done
 fi
 
 if [ -z "${INTERNAL_DEVICE_KERNEL}" ]; then

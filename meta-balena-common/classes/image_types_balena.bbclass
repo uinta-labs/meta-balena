@@ -69,13 +69,13 @@ python() {
     # instead of DEPLOY_DIR_IMAGE (poky morty introduced this change)
     if d.getVar('IMGDEPLOYDIR', True):
         d.setVar('BALENA_ROOT_FS', '${IMGDEPLOYDIR}/${IMAGE_LINK_NAME}.${BALENA_ROOT_FSTYPE}')
-        d.setVar('BALENA_RAW_IMG', '${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.balenaos-img')
+        d.setVar('BALENA_RAW_IMG', '${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.uintaos-img')
         d.setVar('BALENA_RAW_BMAP', '${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.bmap')
         d.setVar('BALENA_DOCKER_IMG', '${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.docker')
         d.setVar('BALENA_HOSTAPP_IMG', '${IMGDEPLOYDIR}/${IMAGE_NAME}.rootfs.${BALENA_ROOT_FSTYPE}')
     else:
         d.setVar('BALENA_ROOT_FS', '${DEPLOY_DIR_IMAGE}/${IMAGE_LINK_NAME}.${BALENA_ROOT_FSTYPE}')
-        d.setVar('BALENA_RAW_IMG', '${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.balenaos-img')
+        d.setVar('BALENA_RAW_IMG', '${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.uintaos-img')
         d.setVar('BALENA_RAW_BMAP', '${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.bmap')
         d.setVar('BALENA_DOCKER_IMG', '${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.docker')
         d.setVar('BALENA_HOSTAPP_IMG', '${DEPLOY_DIR_IMAGE}/${IMAGE_NAME}.rootfs.${BALENA_ROOT_FSTYPE}')
@@ -128,9 +128,9 @@ BALENA_BOOT_FS = "${WORKDIR}/${BALENA_BOOT_FS_LABEL}.img"
 BALENA_ROOTB_FS = "${WORKDIR}/${BALENA_ROOTB_FS_LABEL}.img"
 BALENA_STATE_FS ?= "${WORKDIR}/${BALENA_STATE_FS_LABEL}.img"
 
-# balenaos-img depends on the rootfs image
-IMAGE_TYPEDEP:balenaos-img = "${BALENA_ROOT_FSTYPE}"
-do_image_balenaos_img[depends] = " \
+# uintaos-img depends on the rootfs image
+IMAGE_TYPEDEP:uintaos-img = "${BALENA_ROOT_FSTYPE}"
+do_image_uintaos_img[depends] = " \
     coreutils-native:do_populate_sysroot \
     docker-disk:do_deploy \
     dosfstools-native:do_populate_sysroot \
@@ -142,13 +142,13 @@ do_image_balenaos_img[depends] = " \
     ${BALENA_IMAGE_BOOTLOADER_DEPLOY_TASK} \
     "
 
-do_image_balenaos_img[depends] += "${@ ' virtual/bootloader:do_deploy ' if (d.getVar('UBOOT_CONFIG') or d.getVar('UBOOT_MACHINE')) else ''}"
+do_image_uintaos_img[depends] += "${@ ' virtual/bootloader:do_deploy ' if (d.getVar('UBOOT_CONFIG') or d.getVar('UBOOT_MACHINE')) else ''}"
 
 device_specific_configuration() {
     echo "No device specific configuration"
 }
 
-IMAGE_CMD:balenaos-img () {
+IMAGE_CMD:uintaos-img () {
     #
     # Partition size computation (aligned to BALENA_IMAGE_ALIGNMENT)
     #

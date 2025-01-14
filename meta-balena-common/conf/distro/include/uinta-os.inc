@@ -80,15 +80,15 @@ AMAZON_BALENA_SHARE = "https://s3.amazonaws.com/resin-share/build_requirements"
 INHERIT += "image-buildinfo resin-sanity"
 
 # Identification file flags
-BALENA_IMAGE_FLAG_FILE = "balena-image"
-BALENA_FLASHER_FLAG_FILE = "balena-image-flasher"
+BALENA_IMAGE_FLAG_FILE = "uinta-image"
+BALENA_FLASHER_FLAG_FILE = "uinta-image-flasher"
 
 # Kernel command line
 OS_KERNEL_CMDLINE ?= "${@set_default_kernel_cmdline(d)}"
 OS_KERNEL_SECUREBOOT_CMDLINE ?= "module.sig_enforce lockdown=integrity"
 
 # Initramfs
-INITRAMFS_IMAGE = "balena-image-initramfs"
+INITRAMFS_IMAGE = "uinta-image-initramfs"
 INITRAMFS_IMAGE_BUNDLE = "1"
 KERNEL_INITRAMFS = "-initramfs"
 INITRAMFS_TASK = ""

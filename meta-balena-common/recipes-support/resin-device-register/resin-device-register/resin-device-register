@@ -68,8 +68,6 @@ while true; do
                 device_id=$(jq -r '.id' $REGISTER_LOG_FILE)
                 "${CAT}" "${CONFIG_PATH}" | jq -S ".registered_at=\"$(date +%s)\"|.deviceId=\"$device_id\"|del(.apiKey)" | "${WR}" "${CONFIG_PATH}"
                 echo "[INFO] resin-device-register : Registered device with ID: $device_id and UUID: $UUID."
-                # Regenerate the VPN credentials to stop using `apiKey`
-                systemctl restart prepare-openvpn
             else
                 echo "[ERROR] resin-device-register : Failed to register device. Status code: $status_code"
             fi

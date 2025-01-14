@@ -65,15 +65,15 @@ export DOCKER_HOST="unix:///var/run/balena-host.sock"
 SYSROOT="/mnt/sysroot/inactive"
 LOADTMP="/mnt/data/resin-data/tmp"
 
-if [ -d /mnt/state ]; then
-	# Save VPN state for rollbacks
-	if [ -e /var/run/openvpn/vpn_status/active ]; then
-		echo "BALENAOS_ROLLBACK_VPNONLINE=1" > /mnt/state/rollback-health-variables ;
-	else
-		echo "BALENAOS_ROLLBACK_VPNONLINE=0" > /mnt/state/rollback-health-variables ;
-	fi
-	sync -f /mnt/state
-fi
+# if [ -d /mnt/state ]; then
+# 	# Save VPN state for rollbacks
+# 	if [ -e /var/run/<vpn here>/vpn_status/active ]; then
+# 		echo "BALENAOS_ROLLBACK_VPNONLINE=1" > /mnt/state/rollback-health-variables ;
+# 	else
+# 		echo "BALENAOS_ROLLBACK_VPNONLINE=0" > /mnt/state/rollback-health-variables ;
+# 	fi
+# 	sync -f /mnt/state
+# fi
 
 # Initialize sysroot
 mkdir -p /mnt/sysroot

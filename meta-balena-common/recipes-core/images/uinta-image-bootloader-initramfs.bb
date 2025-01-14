@@ -24,7 +24,7 @@ BAD_RECOMMENDATIONS += "busybox-syslog"
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""
 
-export IMAGE_BASENAME = "balena-image-bootloader-initramfs"
+export IMAGE_BASENAME = "uinta-image-bootloader-initramfs"
 IMAGE_LINGUAS = ""
 
 LICENSE = "MIT"

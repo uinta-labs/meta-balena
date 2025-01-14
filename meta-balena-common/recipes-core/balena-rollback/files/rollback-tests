@@ -23,14 +23,14 @@ echo "Rollback: Running tests"
 # VPN health check
 if [ -f /mnt/state/rollback-health-variables ]; then
 	. /mnt/state/rollback-health-variables
-	if [ -f /run/openvpn/vpn_status/active ]; then
-		echo "Rollback: VPN is back online in new OS."
-	elif [ $BALENAOS_ROLLBACK_VPNONLINE == 1 ]; then
-		echo "Rollback: ERROR: VPN used to be ok but has not connected!"
-		exit 1
-	elif [ $BALENAOS_ROLLBACK_VPNONLINE == 0 ]; then
-		echo "Rollback: VPN used to be offline before HUP. Not using VPN healthcheck for rollback"
-	fi
+# 	if [ -f /run/<vpn here>/vpn_status/active ]; then
+# 		echo "Rollback: VPN is back online in new OS."
+# 	elif [ $BALENAOS_ROLLBACK_VPNONLINE == 1 ]; then
+# 		echo "Rollback: ERROR: VPN used to be ok but has not connected!"
+# 		exit 1
+# 	elif [ $BALENAOS_ROLLBACK_VPNONLINE == 0 ]; then
+# 		echo "Rollback: VPN used to be offline before HUP. Not using VPN healthcheck for rollback"
+# 	fi
 fi
 
 # balenaEngine health check

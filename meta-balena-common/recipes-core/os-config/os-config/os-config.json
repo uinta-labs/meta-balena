@@ -1,20 +1,6 @@
 {
 	"services": [
 		{
-			"id": "openvpn",
-			"files": {
-				"config": {
-					"path": "/etc/openvpn/openvpn.conf",
-					"perm": ""
-				},
-				"ca": {
-					"path": "/etc/openvpn/ca.crt",
-					"perm": ""
-				}
-			},
-			"systemd_services": ["prepare-openvpn.service", "openvpn.service"]
-		},
-		{
 			"id": "ssh",
 			"files": {
 				"authorized_keys": {
@@ -33,13 +19,11 @@
 		"apiEndpoint",
 		"registryEndpoint",
 		"deltaEndpoint",
-		"mixpanelToken",
 		"apiKey",
 		"version",
 		"deviceApiKey",
 		"registered_at",
 		"deviceId",
-		"balenaRootCA"
 	],
 	"schema_version": "1.0.0"
 }

@@ -45,11 +45,6 @@ do_compile () {
 	DOCKER=$(PATH="/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin" which docker)
 	cp "${TOPDIR}/../balena-yocto-scripts/automation/include/balena-api.inc" "${WORKDIR}/"
 
-	_token="${BALENA_API_TOKEN}"
-	if [ -z "${_token}" ] && [ -f "~/.balena/token" ]; then
-		_token=$(cat "~/.balena/token")
-	fi
-
 	# Generate the data filesystem
 	RANDOM=$$
 	_image_name="docker-disk-$RANDOM"
@@ -63,8 +58,6 @@ do_compile () {
 		-e SUPERVISOR_VERSION="${SUPERVISOR_VERSION}" \
 		-e HOSTEXT_IMAGES="${HOSTEXT_IMAGES}" \
 		-e HOSTAPP_PLATFORM="${HOSTAPP_PLATFORM}" \
-		-e BALENA_API_ENV="${BALENA_API_ENV}" \
-		-e BALENA_API_TOKEN="${_token}" \
 		-e PARTITION_SIZE="${PARTITION_SIZE}" \
 		-e FS_BLOCK_SIZE="${FS_BLOCK_SIZE}" \
 		-v /sys/fs/cgroup:/sys/fs/cgroup:ro -v ${B}:/build \

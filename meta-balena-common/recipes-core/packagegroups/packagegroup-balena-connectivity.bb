@@ -26,7 +26,6 @@ CONNECTIVITY_PACKAGES = " \
     balena-net-connectivity-wait \
     dnsmasq \
     dropbear \
-    openvpn \
     openssh \
     balena-proxy-config \
     usb-modeswitch \

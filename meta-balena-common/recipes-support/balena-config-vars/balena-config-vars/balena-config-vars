@@ -100,7 +100,6 @@ read_config() {
              DNS_SERVERS=\(.dnsServers // "8.8.8.8")
              HOSTEXT_IMAGES=\(.hostappExtensions // "")
              LISTEN_PORT=\(.listenPort // "")
-             MIXPANEL_TOKEN=\(.mixpanelToken // "")
              NTP_SERVERS=\(.ntpServers // "")
              OS_NET_CONN_INTERVAL=\(.os.network.connectivity.interval // 3600)
              OS_NET_CONN_RESPONSE=\(.os.network.connectivity.response // "")

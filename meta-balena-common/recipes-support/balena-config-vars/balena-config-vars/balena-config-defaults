@@ -17,7 +17,7 @@ if type is_secured >/dev/null 2>&1; then
 fi
 # Do not use - left here for backwards compatibility - use BALENA_BOOT_MOUNTPOINT instead
 BOOT_MOUNTPOINT="${BALENA_BOOT_MOUNTPOINT}"
-FLASHER_FILEFLAG="$BALENA_BOOT_MOUNTPOINT/balena-image-flasher"
+FLASHER_FILEFLAG="$BALENA_BOOT_MOUNTPOINT/uinta-image-flasher"
 if [ -z "$CONFIG_PATH" ]; then
     if [ -f "$FLASHER_FILEFLAG" ]; then
         # Flasher stores a volatile file in tmpfs

@@ -18,7 +18,6 @@ FILES:${PN} += " \
 BINDMOUNTS += " \
 	${sysconfdir}/ssh/hostkeys \
 	/etc/hostname \
-	/etc/openvpn \
 	/etc/NetworkManager/conf.d \
 	/etc/NetworkManager/system-connections \
 	/etc/NetworkManager/dispatcher.d \
@@ -81,7 +80,6 @@ do_compile[dirs] = "${WORKDIR}"
 do_install () {
 	install -d "${D}${sysconfdir}"
 	touch "${D}/${sysconfdir}/hostname"
-	install -d "${D}${sysconfdir}/openvpn"
 	install -d "${D}/home/root/.ssh"
 	install -d "${D}/${sysconfdir}/ssh/hostkeys"
 }

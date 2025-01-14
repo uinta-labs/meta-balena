@@ -16,9 +16,9 @@ IMAGE_OVERHEAD_FACTOR = "1.0"
 IMAGE_ROOTFS_EXTRA_SPACE = "0"
 IMAGE_ROOTFS_MAXSIZE = "${IMAGE_ROOTFS_SIZE}"
 
-IMAGE_FSTYPES = "balenaos-img"
+IMAGE_FSTYPES = "uintaos-img"
 
-inherit core-image image-balena features_check sign-digest
+inherit core-image image-uinta features_check sign-digest
 
 SPLASH += "plymouth-balena-theme"
 
@@ -66,7 +66,7 @@ symlink_image_signature () {
     # ends up in a predictable location.
 
     if [ -n "${SIGN_API}" ]; then
-        ln -sf "${BALENA_RAW_IMG}.sig" "${DEPLOY_DIR_IMAGE}/balena-image-${MACHINE}.balenaos-img.sig"
+        ln -sf "${BALENA_RAW_IMG}.sig" "${DEPLOY_DIR_IMAGE}/uinta-image-${MACHINE}.uintaos-img.sig"
     fi
 }
 
@@ -109,8 +109,8 @@ BALENA_BOOT_PARTITION_FILES:append = "${@ ' extra_uEnv.txt:/extra_uEnv.txt ' if 
 # Resin image flag file
 BALENA_BOOT_PARTITION_FILES:append = " ${BALENA_IMAGE_FLAG_FILE}:/${BALENA_IMAGE_FLAG_FILE}"
 
-addtask image_size_check after do_image_balenaos_img before do_image_complete
+addtask image_size_check after do_image_uintaos_img before do_image_complete
 do_resin_boot_dirgen_and_deploy[depends] += "redsocks:do_deploy"
 
 SIGNING_ARTIFACTS = "${BALENA_RAW_IMG}"
-addtask sign_digest after do_image_balenaos_img before do_image_complete
+addtask sign_digest after do_image_uintaos_img before do_image_complete

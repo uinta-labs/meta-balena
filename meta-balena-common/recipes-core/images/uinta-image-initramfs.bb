@@ -33,7 +33,7 @@ PACKAGE_INSTALL:append = "${@oe.utils.conditional('PARTITION_TABLE_TYPE','gpt','
 # Do not pollute the initrd image with rootfs features
 IMAGE_FEATURES = ""
 
-export IMAGE_BASENAME = "balena-image-initramfs"
+export IMAGE_BASENAME = "uinta-image-initramfs"
 IMAGE_LINGUAS = ""
 
 LICENSE = "MIT"
